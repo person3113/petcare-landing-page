@@ -11,13 +11,11 @@ function App() {
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
-    // Fetch features
     fetch('http://localhost:8080/api/features')
       .then((res) => res.json())
       .then((data) => setFeatures(data))
       .catch((err) => console.error('Failed to fetch features', err));
 
-    // Fetch members
     fetch('http://localhost:8080/api/members')
       .then((res) => res.json())
       .then((data) => setMembers(data))

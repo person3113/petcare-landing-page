@@ -87,7 +87,12 @@ const ReviewForm = () => {
                     <h3 className="review-list-title">최근 기대평</h3>
                     {reviews.map(review => (
                         <div key={review.id} className="review-bubble-container">
-                            <span className="review-author">{review.authorName}</span>
+                            <div className="review-meta">
+                                <span className="review-author">{review.authorName}</span>
+                                <span className="review-date">
+                                    {review.createdAt ? new Date(review.createdAt).toLocaleString() : ''}
+                                </span>
+                            </div>
                             <div className="review-bubble">
                                 <p>{review.content}</p>
                             </div>
