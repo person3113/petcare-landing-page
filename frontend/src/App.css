@@ -216,7 +216,7 @@ section h2::after {
 }
 
 .submit-btn:hover {
-  background-color: #d97706; /* slightly darker accent */
+  background-color: #d97706;
 }
 
 /* Footer 배경/텍스트 */
@@ -236,4 +236,42 @@ section h2::after {
     margin: 10px auto;
     height: auto;
   }
+}
+
+/* 기대평 목록 (말풍선 스타일) */
+.review-list {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--color-border);
+}
+
+.review-list-title {
+  text-align: center;
+  color: var(--color-text-h);
+  margin-bottom: 20px;
+}
+
+.review-bubble-container {
+  margin-bottom: 15px;
+}
+
+.review-author {
+  display: block;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: var(--color-text);
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+
+.review-bubble {
+  display: inline-block;
+  background-color: var(--must-bg);
+  padding: 10px 15px;
+  border-radius: 15px;
+  border-top-left-radius: 0;
+  border: 1px solid var(--color-accent-border);
+  color: var(--color-text-h);
+  max-width: 90%;
+  word-wrap: break-word;
 }

@@ -1,8 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const ReviewForm = () => {
     const [name, setName] = useState('');
     const [content, setContent] = useState('');
+    const [reviews, setReviews] = useState([]);
+
+    const fetchReviews = () => {
+        fetch('http://localhost:8080/api/reviews')
+            .then(res => res.json())
+            .then(data => {
+                const latestReviews = data.reverse().slice(0, 5);
+                setReviews(latestReviews);
+            })
+            .catch(err => console.error('Failed to fetch reviews', err));
+    };
+
+    useEffect(() => {
+        fetchReviews();
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,6 +44,7 @@ const ReviewForm = () => {
                 alert('기대평이 성공적으로 등록되었습니다!');
                 setName('');
                 setContent('');
+                fetchReviews(); // 작성 후 즉시 갱신
             } else {
                 alert('등록에 실패했습니다. 다시 시도해주세요.');
             }
@@ -41,7 +57,7 @@ const ReviewForm = () => {
 
     return (
         <section className="review-section">
-            <h2>기대평 남기기</h2>
+            <h2>사전 예약 및 기대평 남기기 💌</h2>
             <form onSubmit={handleSubmit} className="review-form">
                 <div className="form-group">
                     <label htmlFor="name">이름</label>
@@ -65,6 +81,20 @@ const ReviewForm = () => {
                 </div>
                 <button type="submit" className="submit-btn">등록하기</button>
             </form>
+
+            {reviews.length > 0 && (
+                <div className="review-list">
+                    <h3 className="review-list-title">최근 기대평</h3>
+                    {reviews.map(review => (
+                        <div key={review.id} className="review-bubble-container">
+                            <span className="review-author">{review.authorName}</span>
+                            <div className="review-bubble">
+                                <p>{review.content}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
         </section>
     );
 };
