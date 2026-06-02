@@ -1,17 +1,197 @@
-/* 기본 레이아웃 */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+/* CSS 변수 */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2c3e50;
+  --bg-color: #f9f9f9;
+  --text-color: #333;
+  --must-bg: #ffeaa7;
+  --must-text: #d35400;
+  --should-bg: #dff9fb;
+  --should-text: #2980b9;
 }
 
-h1 {
+/* 기본 설정 */
+* {
+  box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* 배치 */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 배경 및 텍스트 스타일 */
+.header-section {
   text-align: center;
-  color: #2c3e50;
+  background-color: #e8f4f8;
+  padding: 50px 20px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #ccc;
+}
+
+.header-section h1 {
+  color: var(--secondary-color);
+  font-size: 2.5em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* 텍스트 그림자 */
+  margin-bottom: 10px;
+}
+
+.header-section h2 {
+  color: var(--primary-color);
+}
+
+/* 섹션 타이틀 */
+section h2 {
+  text-align: center;
+  color: var(--secondary-color);
   margin-bottom: 20px;
 }
 
-p {
+section h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 10px auto 0;
+}
+
+/* 기능 레이아웃 */
+.features-grid {
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.feature-card {
+  float: left; /* 좌우로 띄우기 */
+  width: 30%; /* 3열 배치 (여백 고려) */
+  margin: 1.5%;
+  background-color: white;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Float 해제 */
+.features-grid::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.must-badge {
+  background-color: var(--must-bg);
+  color: var(--must-text);
+}
+
+.should-badge {
+  background-color: var(--should-bg);
+  color: var(--should-text);
+}
+
+.team-grid {
+  text-align: center; /* 자식 요소 가운데 정렬 */
+  margin-bottom: 40px;
+}
+
+.team-card {
+  display: inline-block; /* 한 줄에 배치 */
+  width: 250px;
+  margin: 10px;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.team-card h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.team-card .role {
+  color: #777;
+  font-style: italic;
+}
+
+/* 리뷰 폼 */
+.review-section {
+  background-color: white;
+  padding: 30px;
+  border: 2px solid var(--primary-color);
+  max-width: 500px;
+  margin: 0 auto 50px auto; /* 중앙 정렬 */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px;
+  border: none;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Footer 배경/텍스트 */
+.footer-section {
+  background-color: var(--secondary-color);
+  color: white;
   text-align: center;
-  color: #7f8c8d;
+  padding: 20px;
+}
+
+/* 모바일에서 레이아웃 세로 변경 */
+@media (max-width: 768px) {
+  .feature-card {
+    width: 90%; /* 모바일에서는 1열 */
+    float: none;
+    margin: 10px auto;
+  }
 }
