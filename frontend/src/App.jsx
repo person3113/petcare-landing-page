@@ -5,7 +5,7 @@ function App() {
     <>
       <div className="container">
         <h1>PetCare Landing Page</h1>
-        <p>This is the starting point.</p>
+        <p>lorem ipsum dolor sit amet</p>
       </div>
     </>
   )
