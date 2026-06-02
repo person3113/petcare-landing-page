@@ -41,7 +41,7 @@ const ReviewForm = () => {
 
     return (
         <section className="review-section">
-            <h2>사전 예약 및 기대평 남기기 💌</h2>
+            <h2>기대평 남기기</h2>
             <form onSubmit={handleSubmit} className="review-form">
                 <div className="form-group">
                     <label htmlFor="name">이름</label>

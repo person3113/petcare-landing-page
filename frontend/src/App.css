@@ -1,13 +1,25 @@
 /* CSS 변수 */
 :root {
-  --primary-color: #3498db;
-  --secondary-color: #2c3e50;
+  --color-text: #6b6375;
+  --color-text-h: #08060d;
+  --color-bg: #fff;
+  --color-border: #e5e4e7;
+  --color-accent: #f59e0b;
+  --color-accent-bg: rgba(245, 158, 11, 0.1);
+  --color-accent-border: rgba(245, 158, 11, 0.5);
+
+  --font-sans: 'Noto Sans KR', system-ui, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  /* 하위 호환 매핑 */
+  --primary-color: var(--color-accent);
+  --secondary-color: var(--color-text-h);
   --bg-color: #f9f9f9;
-  --text-color: #333;
-  --must-bg: #ffeaa7;
-  --must-text: #d35400;
-  --should-bg: #dff9fb;
-  --should-text: #2980b9;
+  --text-color: var(--color-text);
+  --must-bg: var(--color-accent-bg);
+  --must-text: var(--color-accent);
+  --should-bg: #f3f4f6;
+  --should-text: var(--color-text);
 }
 
 /* 기본 설정 */
@@ -16,7 +28,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-sans);
   color: var(--text-color);
   background-color: var(--bg-color);
   margin: 0;
@@ -33,21 +45,21 @@ body {
 /* 배경 및 텍스트 스타일 */
 .header-section {
   text-align: center;
-  background-color: #e8f4f8;
+  background-color: var(--color-bg);
   padding: 50px 20px;
   margin-bottom: 30px;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header-section h1 {
   color: var(--secondary-color);
   font-size: 2.5em;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* 텍스트 그림자 */
   margin-bottom: 10px;
 }
 
 .header-section h2 {
   color: var(--primary-color);
+  font-weight: 500;
 }
 
 /* 섹션 타이틀 */
@@ -72,27 +84,37 @@ section h2::after {
   margin-bottom: 40px;
 }
 
-.feature-card {
-  float: left; /* 좌우로 띄우기 */
-  width: 30%; /* 3열 배치 (여백 고려) */
-  margin: 1.5%;
-  background-color: white;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Float 해제 */
 .features-grid::after {
   content: "";
   display: table;
   clear: both;
+}
+
+.feature-card {
+  float: left;
+  width: 30%;
+  margin: 1.5%;
+  height: 220px; /* flexbox 없이 높이를 일관성 있게 맞추기 위해 고정 높이 사용 */
+  background-color: white;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-color: var(--color-accent-border);
+}
+
+.feature-header {
+  margin-bottom: 15px;
+}
+
+.feature-header h3 {
+  margin-top: 10px;
+  color: var(--color-text-h);
 }
 
 .badge {
@@ -106,34 +128,40 @@ section h2::after {
 .must-badge {
   background-color: var(--must-bg);
   color: var(--must-text);
+  border: 1px solid var(--color-accent-border);
 }
 
 .should-badge {
   background-color: var(--should-bg);
   color: var(--should-text);
+  border: 1px solid var(--color-border);
 }
 
 .team-grid {
-  text-align: center; /* 자식 요소 가운데 정렬 */
+  text-align: center;
   margin-bottom: 40px;
 }
 
 .team-card {
-  display: inline-block; /* 한 줄에 배치 */
+  display: inline-block;
+  vertical-align: top;
   width: 250px;
+  height: 180px; /* 고정 높이로 일관성 유지 */
   margin: 10px;
   background-color: white;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
 }
 
 .team-card h3 {
   margin-top: 10px;
   margin-bottom: 5px;
+  color: var(--color-text-h);
 }
 
 .team-card .role {
-  color: #777;
+  color: var(--color-text);
   font-style: italic;
 }
 
@@ -141,7 +169,8 @@ section h2::after {
 .review-section {
   background-color: white;
   padding: 30px;
-  border: 2px solid var(--primary-color);
+  border: 1px solid var(--color-accent-border);
+  border-radius: 8px;
   max-width: 500px;
   margin: 0 auto 50px auto; /* 중앙 정렬 */
 }
@@ -154,14 +183,22 @@ section h2::after {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: var(--color-text-h);
 }
 
 .form-group input[type="text"],
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
+  font-family: var(--font-sans);
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
 }
 
 .submit-btn {
@@ -171,12 +208,15 @@ section h2::after {
   color: white;
   padding: 12px;
   border: none;
+  border-radius: 4px;
   font-size: 1.1em;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .submit-btn:hover {
-  background-color: #2980b9;
+  background-color: #d97706; /* slightly darker accent */
 }
 
 /* Footer 배경/텍스트 */
@@ -185,6 +225,7 @@ section h2::after {
   color: white;
   text-align: center;
   padding: 20px;
+  border-radius: 8px 8px 0 0;
 }
 
 /* 모바일에서 레이아웃 세로 변경 */
@@ -193,5 +234,6 @@ section h2::after {
     width: 90%; /* 모바일에서는 1열 */
     float: none;
     margin: 10px auto;
+    height: auto;
   }
 }
