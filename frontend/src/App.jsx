@@ -14,12 +14,12 @@ function App() {
     fetch('http://localhost:8080/api/features')
       .then((res) => res.json())
       .then((data) => setFeatures(data))
-      .catch((err) => console.error('Failed to fetch features', err));
+      .catch((err) => console.error('fetch 실패', err));
 
     fetch('http://localhost:8080/api/members')
       .then((res) => res.json())
       .then((data) => setMembers(data))
-      .catch((err) => console.error('Failed to fetch members', err));
+      .catch((err) => console.error('fetch 실패', err));
   }, []);
 
   return (

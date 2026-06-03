@@ -12,7 +12,7 @@ const ReviewForm = () => {
                 const latestReviews = data.reverse().slice(0, 5);
                 setReviews(latestReviews);
             })
-            .catch(err => console.error('Failed to fetch reviews', err));
+            .catch(err => console.error('fetch 실패', err));
     };
 
     useEffect(() => {
@@ -50,7 +50,7 @@ const ReviewForm = () => {
             }
         })
         .catch((error) => {
-            console.error('Error submitting review:', error);
+            console.error('fetch 실패', error);
             alert('서버와 연결할 수 없습니다.');
         });
     };

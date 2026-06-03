@@ -94,7 +94,7 @@ section h2::after {
   float: left;
   width: 30%;
   margin: 1.5%;
-  height: 220px; /* flexbox 없이 높이를 일관성 있게 맞추기 위해 고정 높이 사용 */
+  height: 220px;
   background-color: white;
   padding: 20px;
   border: 1px solid var(--color-border);
@@ -146,12 +146,22 @@ section h2::after {
   display: inline-block;
   vertical-align: top;
   width: 250px;
-  height: 180px; /* 고정 높이로 일관성 유지 */
+  height: 200px; /* 고정 높이 늘림 (이미지 공간 확보) */
   margin: 10px;
   background-color: white;
   padding: 20px;
   border: 1px solid var(--color-border);
   border-radius: 8px;
+  text-align: center; /* 안의 내용물 중앙 정렬 */
+}
+
+.avatar-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 .team-card h3 {
